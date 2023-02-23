@@ -44,13 +44,13 @@ events.actualizarEventos = async (req, res) => {
         message: "Evento no encontrado",
       });
     }
-
+    console.log(event.user.toString(), uid);
     if (event.user.toString() !== uid) {
       return res.status(401).json({
         message: "No puede editar este evento",
       });
     }
-
+    console.log(body);
     const eventUpdated = await Eventos.findByIdAndUpdate(id, body, {
       new: true,
     });
